@@ -45,19 +45,8 @@ struct ContentView : View {
                         .opacity(viewModel.positionLocked ? 0.25 : 1.0)
                 }
                 
-                Slider(value: $viewModel.sliderValue, in: 0.002...0.01)
+                Slider(value: $viewModel.sliderValue, in: 0.002...0.05)
                     .accentColor(.white)
-                
-                Button {
-                    viewModel.uiSignal.send(.lockPosition)
-                } label: {
-                    Label("Boom", systemImage: "target")
-                        .font(.system(.title))
-                        .foregroundColor(.white)
-                        .labelStyle(IconOnlyLabelStyle())
-                        .frame(width: 44, height: 44)
-                        .opacity(viewModel.positionLocked ? 0.25 : 1.0)
-                }
                 
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
@@ -92,13 +81,11 @@ class SimpleARView: ARView {
 
 
     // TODO: Add any local variables here. //////////////////////////////////////
-    
-    var boxEntity: Entity!
-    var sphereEntity: Entity!
+    var player: AVAudioPlayer!
+
     
     var piggyBank: Entity!
-//    var piggyBankStartScale:
-    
+    var brokenPiggy: Entity!
     
     var coin: Entity!
     let coinTopY: Float = 0.60
@@ -131,6 +118,7 @@ class SimpleARView: ARView {
     
         setupEntities()
     }
+    
     
     func setupScene() {
         // Setup world tracking and plane detection.
@@ -192,29 +180,41 @@ class SimpleARView: ARView {
         originAnchor.addChild(cursor)
         
         piggyBank = try? Entity.load(named: "piggy-bank.usdz")
-        piggyBank.position.y = -0.4;
-        print(piggyBank.scale);
+        piggyBank.position.y = -0.4
         cursor.addChild(piggyBank)
+            
+        // Broken PIggy Img material.
+        var brokenPiggyImg = SimpleMaterial()
+        let texture = try! TextureResource.load(named: "broken-piggy.jpeg")
+        brokenPiggyImg.baseColor = .texture(texture)
+        
+        
+        let boxMesh = MeshResource.generateBox(size: [0.5, 0.02, 0.5], cornerRadius: 0.0)
+        brokenPiggy = ModelEntity(mesh: boxMesh, materials: [brokenPiggyImg])
+        brokenPiggy.position.y = -0.5
         
         coin = try? Entity.load(named: "coin.usdz")
         coin.position.y = coinTopY;
         cursor.addChild(coin)
     }
 
-
     // TODO: Animate entities. //////////////////////////////////////
     func renderLoop() {
         // Slider value from UI.
         let sliderValue = Float(viewModel.sliderValue)
         
+        //0.203 = box height of piggybank
+        //0.066 = box height of coin
         if(piggyBank.position.y + 0.203 > coin.position.y + 0.066){
             coin.position.y = coinTopY
             coins += 1.0
             piggyBank.scale = [1 + 0.35 * coins, 1 + 0.35 * coins, 1 + 0.35 * coins]
-            print(piggyBank.scale.x)
-            if(piggyBank.scale.x > 3.5 ){
+            if(piggyBank.scale.x > 4 ){
                 moveCoin = false
-                coin.position.y = coinTopY
+                cursor.addChild(brokenPiggy)
+                playSound()
+                cursor.removeChild(piggyBank)
+                cursor.removeChild(coin)
             }
         }
         
@@ -224,4 +224,13 @@ class SimpleARView: ARView {
         }
         
     }
+    
+    func playSound() {
+           let url = Bundle.main.url(forResource: "womp-womp", withExtension: "mp3")
+           player = try! AVAudioPlayer(contentsOf: url!)
+           player.play()
+        }
+
+    
 }
+

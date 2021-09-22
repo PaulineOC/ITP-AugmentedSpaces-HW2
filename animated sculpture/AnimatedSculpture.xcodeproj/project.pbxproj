@@ -11,6 +11,8 @@
 		51B6ECF626FA29B6005124A1 /* coin.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 51B6ECF526FA29B6005124A1 /* coin.usdz */; };
 		51B6ECF826FA3052005124A1 /* bronze.png in Resources */ = {isa = PBXBuildFile; fileRef = 51B6ECF726FA3052005124A1 /* bronze.png */; };
 		51B6ECFC26FA38A9005124A1 /* test-pig.obj in Resources */ = {isa = PBXBuildFile; fileRef = 51B6ECFB26FA38A9005124A1 /* test-pig.obj */; };
+		51B6ED0A26FA5551005124A1 /* broken-piggy.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 51B6ED0926FA5551005124A1 /* broken-piggy.jpeg */; };
+		51B6ED0C26FA57CA005124A1 /* womp-womp.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51B6ED0B26FA57CA005124A1 /* womp-womp.mp3 */; };
 		6AE9801526F1CF3E001F1C8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE9801426F1CF3E001F1C8C /* AppDelegate.swift */; };
 		6AE9801726F1CF3E001F1C8C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE9801626F1CF3E001F1C8C /* ContentView.swift */; };
 		6AE9801B26F1CF3F001F1C8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AE9801A26F1CF3F001F1C8C /* Assets.xcassets */; };
@@ -23,6 +25,8 @@
 		51B6ECF526FA29B6005124A1 /* coin.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = coin.usdz; sourceTree = "<group>"; };
 		51B6ECF726FA3052005124A1 /* bronze.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bronze.png; sourceTree = "<group>"; };
 		51B6ECFB26FA38A9005124A1 /* test-pig.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-pig.obj"; sourceTree = "<group>"; };
+		51B6ED0926FA5551005124A1 /* broken-piggy.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "broken-piggy.jpeg"; sourceTree = "<group>"; };
+		51B6ED0B26FA57CA005124A1 /* womp-womp.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "womp-womp.mp3"; sourceTree = "<group>"; };
 		6AE9801126F1CF3E001F1C8C /* AnimatedSculpture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatedSculpture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AE9801426F1CF3E001F1C8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AE9801626F1CF3E001F1C8C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +66,8 @@
 		6AE9801326F1CF3E001F1C8C /* AnimatedSculpture */ = {
 			isa = PBXGroup;
 			children = (
+				51B6ED0B26FA57CA005124A1 /* womp-womp.mp3 */,
+				51B6ED0926FA5551005124A1 /* broken-piggy.jpeg */,
 				51B6ECFB26FA38A9005124A1 /* test-pig.obj */,
 				51B6ECF526FA29B6005124A1 /* coin.usdz */,
 				51B6ECF126FA2546005124A1 /* piggy-bank.usdz */,
@@ -152,9 +158,11 @@
 			files = (
 				51B6ECFC26FA38A9005124A1 /* test-pig.obj in Resources */,
 				51B6ECF626FA29B6005124A1 /* coin.usdz in Resources */,
+				51B6ED0C26FA57CA005124A1 /* womp-womp.mp3 in Resources */,
 				51B6ECF826FA3052005124A1 /* bronze.png in Resources */,
 				51B6ECF226FA2546005124A1 /* piggy-bank.usdz in Resources */,
 				6AE9801E26F1CF3F001F1C8C /* Preview Assets.xcassets in Resources */,
+				51B6ED0A26FA5551005124A1 /* broken-piggy.jpeg in Resources */,
 				6AE9801B26F1CF3F001F1C8C /* Assets.xcassets in Resources */,
 				6AE9804E26F23A7A001F1C8C /* checker.png in Resources */,
 			);
